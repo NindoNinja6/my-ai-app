@@ -1,9 +1,7 @@
 import streamlit as st
 import google.generativeai as genai
-import pandas as pd
 
-# SEKARANG KITA AMBIL DARI BRANKAS RAHASIA (SECRETS)
-# Anda tidak perlu lagi menulis kodenya di sini
+# Pastikan nama di dalam kurung [] sama dengan yang ada di Secrets
 API_KEY = st.secrets["GOOGLE_API_KEY"]
 LINK_SHEET = st.secrets["LINK_SHEET"]
 INSTRUKSI_C2N = st.secrets["INSTRUKSI_C2N"]
