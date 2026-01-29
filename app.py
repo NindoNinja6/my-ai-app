@@ -21,18 +21,18 @@ with st.sidebar:
 
 if user_email:
     if check_access(user_email):
-       try:
-    genai.configure(api_key=API_KEY)
-    
-    # GUNAKAN NAMA INI (Pastikan ada angka 1.5 dan kata flash)
-    model = genai.GenerativeModel(
-        model_name='gemini-1.5-flash',
-        system_instruction=INSTRUKSI_C2N
-    )
-    
-    # ... sisa kode chat Anda ...
-except Exception as e:
-    st.error(f"⚠️ Terjadi Kendala: {e}")
+try:
+            # Pastikan semua baris di bawah 'try' menjorok ke kanan dengan jumlah spasi yang sama
+            genai.configure(api_key=API_KEY)
+            model = genai.GenerativeModel(
+                model_name='gemini-1.5-flash',
+                system_instruction=INSTRUKSI_C2N
+            )
+            
+            # ... sisa kode chat Anda ...
+            
+        except Exception as e:
+            st.error(f"⚠️ Terjadi Kendala: {e}")
 
             model = genai.GenerativeModel(
                 model_name=st.session_state.model_name,
