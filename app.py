@@ -1,11 +1,11 @@
 import streamlit as st
 import google.generativeai as genai
+import pandas as pd
 
-# Pastikan nama di dalam kurung [] sama dengan yang ada di Secrets
+# Pastikan nama di dalam tanda kurung ini sama persis dengan di Secrets
 API_KEY = st.secrets["GOOGLE_API_KEY"]
 LINK_SHEET = st.secrets["LINK_SHEET"]
 INSTRUKSI_C2N = st.secrets["INSTRUKSI_C2N"]
-
 st.set_page_config(page_title="C2N AI Video Maker", page_icon="🎬")
 
 def check_access(email):
