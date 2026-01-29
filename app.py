@@ -31,7 +31,7 @@ if user_email:
         # Memasang "Otak" C2N ke Model
         genai.configure(api_key=API_KEY)
         model = genai.GenerativeModel(
-            model_name='gemini-1.5-pro',
+            model_name='gemini-pro',
             system_instruction=INSTRUKSI_C2N
         )
 
