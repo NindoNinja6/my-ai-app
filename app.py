@@ -8,7 +8,7 @@ LINK_SHEET = "https://docs.google.com/spreadsheets/d/1e5qxD7TAR68C_dJ5A8X9k4R10-
 
 # Tempelkan teks panjang dari metadata.json tadi di sini:
 INSTRUKSI_C2N = """
-("A powerful AI-driven tool for content creators to generate viral video scripts, visuals, and SEO metadata using Google Gemini.")
+("description": "A powerful AI-driven tool for content creators to generate viral video scripts, visuals, and SEO metadata using Google Gemini.")
 """
 # -----------------------------
 
