@@ -21,20 +21,18 @@ with st.sidebar:
 
 if user_email:
     if check_access(user_email):
-        try:
-            genai.configure(api_key=API_KEY)
-            
-            # --- FITUR AUTO-DETECT MODEL ---
-            if "model_name" not in st.session_state:
-                # Mencari model yang tersedia untuk API Key Anda
-                available_models = [m.name for m in genai.list_models() if 'generateContent' in m.supported_generation_methods]
-                # Prioritas: 1.5-flash, lalu 1.5-pro, lalu gemini-pro
-                if 'models/gemini-1.5-flash' in available_models:
-                    st.session_state.model_name = 'gemini-1.5-flash'
-                elif 'models/gemini-1.5-pro' in available_models:
-                    st.session_state.model_name = 'gemini-1.5-pro'
-                else:
-                    st.session_state.model_name = 'gemini-pro'
+       try:
+    genai.configure(api_key=API_KEY)
+    
+    # GUNAKAN NAMA INI (Pastikan ada angka 1.5 dan kata flash)
+    model = genai.GenerativeModel(
+        model_name='gemini-1.5-flash',
+        system_instruction=INSTRUKSI_C2N
+    )
+    
+    # ... sisa kode chat Anda ...
+except Exception as e:
+    st.error(f"⚠️ Terjadi Kendala: {e}")
 
             model = genai.GenerativeModel(
                 model_name=st.session_state.model_name,
