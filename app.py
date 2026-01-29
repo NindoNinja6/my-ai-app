@@ -21,12 +21,12 @@ with st.sidebar:
 
 if user_email:
     if check_access(user_email):
-try:
-            # Pastikan semua baris di bawah 'try' menjorok ke kanan dengan jumlah spasi yang sama
-            genai.configure(api_key=API_KEY)
-            model = genai.GenerativeModel(
-                model_name='gemini-1.5-flash',
-                system_instruction=INSTRUKSI_C2N
+    try:
+        # Pastikan semua baris di bawah 'try' menjorok ke kanan dengan jumlah spasi yang sama
+         genai.configure(api_key=API_KEY)
+         model = genai.GenerativeModel(
+         model_name='gemini-1.5-flash',
+         system_instruction=INSTRUKSI_C2N
             )
             
             # ... sisa kode chat Anda ...
