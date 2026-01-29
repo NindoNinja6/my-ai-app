@@ -2,12 +2,11 @@ import streamlit as st
 import google.generativeai as genai
 import pandas as pd
 
-# --- KONFIGURASI ---
-API_KEY = "AIzaSyCyrI9LuPHCOrYk4iXn831Vz0wvuWNPVUo"
-LINK_SHEET = "https://docs.google.com/spreadsheets/d/1e5qxD7TAR68C_dJ5A8X9k4R10-tLdqbi00SgIrmS8vY/edit?usp=sharing"
-INSTRUKSI_C2N = """
-("A powerful AI-driven tool for content creators to generate viral video scripts, visuals, and SEO metadata using Google Gemini.")
-"""
+# SEKARANG KITA AMBIL DARI BRANKAS RAHASIA (SECRETS)
+# Anda tidak perlu lagi menulis kodenya di sini
+API_KEY = st.secrets["GOOGLE_API_KEY"]
+LINK_SHEET = st.secrets["LINK_SHEET"]
+INSTRUKSI_C2N = st.secrets["INSTRUKSI_C2N"]
 
 st.set_page_config(page_title="C2N AI Video Maker", page_icon="🎬")
 
