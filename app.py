@@ -25,8 +25,21 @@ if user_email:
     if check_access(user_email):
         try:
             genai.configure(api_key=API_KEY)
+
+            # --- LOGIKA DETEKTIF MODEL ---
+            if "model_pilihan" not in st.session_state:
+                # Mencari model apa saja yang bisa dipakai oleh API Key Anda
+                models = [m.name for m in genai.list_models() if 'generateContent' in m.supported_generation_methods]
+                # Prioritas: 1.5-flash, lalu 1.5-pro, lalu gemini-pro (versi lama)
+                if 'models/gemini-1.5-flash' in models:
+                    st.session_state.model_pilihan = 'gemini-1.5-flash'
+                elif 'models/gemini-1.5-pro' in models:
+                    st.session_state.model_pilihan = 'gemini-1.5-pro'
+                else:
+                    st.session_state.model_pilihan = 'gemini-pro'
+
             model = genai.GenerativeModel(
-                model_name='gemini-1.5-flash',
+                model_name=st.session_state.model_pilihan,
                 system_instruction=INSTRUKSI_C2N
             )
 
@@ -34,6 +47,7 @@ if user_email:
                 st.session_state.messages = []
 
             st.title("🚀 C2N AI Video Maker")
+            st.caption(f"Status: Aktif menggunakan {st.session_state.model_pilihan}")
 
             for m in st.session_state.messages:
                 with st.chat_message(m["role"]):
@@ -45,13 +59,14 @@ if user_email:
                     st.markdown(prompt)
                 
                 with st.chat_message("assistant"):
-                    with st.spinner("C2N sedang bekerja..."):
+                    with st.spinner("C2N sedang memproses..."):
                         response = model.generate_content(prompt)
                         st.markdown(response.text)
                 st.session_state.messages.append({"role": "assistant", "content": response.text})
 
         except Exception as e:
             st.error(f"⚠️ Terjadi Kendala AI: {e}")
+            st.info("Coba refresh halaman ini setelah 1 menit.")
     else:
         st.error("Akses ditolak. Email tidak terdaftar di Google Sheets.")
 else:
