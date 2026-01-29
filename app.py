@@ -3,7 +3,7 @@ import google.generativeai as genai
 import pandas as pd
 
 # --- KONFIGURASI ---
-API_KEY = "AIzaSyCv1KR9ggnfPH9Ke6yQyS9VuGao9HoRnmQ"
+API_KEY = "AIzaSyCyrI9LuPHCOrYk4iXn831Vz0wvuWNPVUo"
 LINK_SHEET = "https://docs.google.com/spreadsheets/d/1e5qxD7TAR68C_dJ5A8X9k4R10-tLdqbi00SgIrmS8vY/edit?usp=sharing"
 INSTRUKSI_C2N = """
 ("A powerful AI-driven tool for content creators to generate viral video scripts, visuals, and SEO metadata using Google Gemini.")
